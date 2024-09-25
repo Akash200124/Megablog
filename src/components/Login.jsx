@@ -39,7 +39,7 @@ function Login() {
             <div className={`mx-auto w-1/2 max-w-lg  bg-gray-100 rounded-xl p-10 border border-black/10`} >
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
-                        <img src="./logo.png" alt="logo" />
+                        <img src="./assets/logo.png" alt="logo" />
                         {/* <Logo width="100%" /> */}
                     </span>
                 </div>
