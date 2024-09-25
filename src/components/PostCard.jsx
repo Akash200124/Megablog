@@ -21,7 +21,8 @@ function PostCard({ post } = {}) {
         if (featureImage) {
             // console.log(appwriteSerive.getFilePreview(featureimage))
            const url =   appwriteSerive.getFilePreview(featureImage)
-            setImageUrl(url);  // Set the preview URL in state
+            setImageUrl(url.href);  // Set the preview URL in state
+            console.log(url.href,"url")
                
         }
     }, [featureImage]);
