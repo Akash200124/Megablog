@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { login as authLogin } from '../store/authSlice';
-import { Button, Container, Input, Logo } from './index';
+import { Button, Container, Input } from './index';
 import { useDispatch } from "react-redux";
 // import { AuthService } from "../appwrite/auth";
 import { useForm } from 'react-hook-form'
 import authService from '../appwrite/auth'
+import Logo from "../assets/logo.png";
 
 
 function Login() {
@@ -39,7 +40,7 @@ function Login() {
             <div className={`mx-auto w-1/2 max-w-lg  bg-gray-100 rounded-xl p-10 border border-black/10`} >
                 <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
-                        <img src="./assets/logo.png" alt="logo" />
+                        <img src ={Logo} alt="logo" />
                         {/* <Logo width="100%" /> */}
                     </span>
                 </div>

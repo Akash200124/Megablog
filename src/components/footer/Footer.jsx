@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 // import Logo from "./Logo";
+import Logo from '../../assets/logo.png';
 
 function Footer() {
     return (
@@ -9,7 +10,7 @@ function Footer() {
                 <div className="w-full md:w-1/2 lg:w-5/12 p-6">
                     <div className="flex h-full flex-col justify-between">
                         <div className="mb-4 inline-flex items-center">
-                            <img src="./assets/logo.png" alt="Logo" width="100px" />
+                            <img src={Logo} alt="Logo" width="100px" />
                         </div>
                         <div>
                             <p className="text-sm text-gray-300">
