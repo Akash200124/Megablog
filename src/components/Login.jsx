@@ -77,6 +77,8 @@ function Login() {
                         })}
                     >
                     </Input>
+
+
                     <Input
                         label="password"
                         type="password"
@@ -86,6 +88,9 @@ function Login() {
                         })}
                     >
                     </Input>
+                    
+                   
+
 
                     <button type="submit" className="w-full bg-blue-600 px-5 text-white rounded-md hover:bg-blue-700 py-2">Sign in </button>
                     {/* <Button

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import appwriteSerive from '../appwrite/config'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Loader from "../components/Loader"
 
 // const PostCard = ({ post }) => {
 //     // Use optional chaining or default values to prevent errors
@@ -11,10 +12,11 @@ function PostCard({ post } = {}) {
     const  { $id, title , featureImage } = post ;
     console.log("postid",$id);
     
-    console.log("featureimage",featureImage)
-    console.log("title",title)
+    // console.log("featureimage",featureImage)
+    // console.log("title",title)
 
     const [imageUrl, setImageUrl] = useState(null);
+    const [loadering, setLoadering] = useState(true);
 
     useEffect(() => {
         // Fetch the image preview only once when `featureimage` changes
@@ -23,9 +25,17 @@ function PostCard({ post } = {}) {
            const url =   appwriteSerive.getFilePreview(featureImage)
             setImageUrl(url.href);  // Set the preview URL in state
             console.log(url.href,"url")
+            setLoadering(false);
                
         }
     }, [featureImage]);
+
+    if (loadering) {
+        return (
+
+            <Loader />
+        )
+    }
 
     return (
         <Link to={`/post/${$id}`}>

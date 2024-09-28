@@ -1,12 +1,20 @@
 import conf from "../conf/conf";
-import { Client, ID, Databases, Storage, Query } from "appwrite"
+import { Client, ID, Databases, Storage, Query,Account } from "appwrite"
+
+
+
+
 
 
 export class Service {
 
+  
+
     client = new Client();
     databases;
     bucket;
+    appwriteAccount;
+   
     
 
     constructor() {
@@ -16,6 +24,9 @@ export class Service {
 
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
+        this.appwriteAccount = new Account(this.client); 
+       
+
     }
 
     async createPost({ title, slug, content, featureImage, status, userId }) {
@@ -25,8 +36,12 @@ export class Service {
             console.log("content", content)
             console.log("featureImage", featureImage)
             console.log("status", status)
-            console.log("userId", userId)
+            // console.log("userId", userId)
+            const user = await this.appwriteAccount.get(); // Get the logged-in user
+            const userId = user.$id;
+
             return await this.databases.createDocument(
+
                 conf.appWriteDatabaseId,
                 conf.appWriteCollectionId,
                 slug,
@@ -98,15 +113,21 @@ export class Service {
         }
     }
 
-    async getPosts(queries = [Query.equal("status","active")]){
+    
+    
+    
+    async getPosts(queries = [Query.equal("status","active") ]){
         try {
-            // const userData = useSelector(state => state.auth.userData);
+           
+            
+            const user = await this.appwriteAccount.get(); // Get the logged-in user
+            console.log(user,"userdata")
+            const userId = user.$id; // Retrieve the user ID
+            // console.log(userId, "useridFromAppWrite");
 
-            // console.log(userData?.payload?.userData?.$id, 'userdata')
+            // Add userId to the queries to fetch only the logged-in user's posts
+            queries.push(Query.equal("userId", userId)); 
 
-            // const userQuery = Query.equal("userId", userData?.payload?.userData?.$id);
-
-            // const combinedQueries = [...queries, userQuery];
             return await this.databases.listDocuments(
                 conf.appWriteDatabaseId,
                 conf.appWriteCollectionId,

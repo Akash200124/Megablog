@@ -13,6 +13,7 @@ import post from "./PostCard"
 import postForm from "./post-form/PostForm"
 import AuthLayout from "./AuthLayout"
 import Select from "./Select"
+import Loader from "./Loader";
 
 export {
     Header,
@@ -29,4 +30,5 @@ export {
     postForm,
     AuthLayout,
     Select,
+    Loader
 }
